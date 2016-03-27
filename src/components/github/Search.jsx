@@ -11,6 +11,17 @@ class Search extends Component{
 		this.props.onFormSubmit(username);
 		this.refs.username.value = '';
     }
+    
+    render(){
+		return(
+			<div>
+				<form onSubmit={this.onSubmit.bind(this)}>
+					<label>Search Github Users</label>
+					<input type="text" ref="username" className="form-control" />
+				</form>
+			</div>
+		);
+	}
 }
 
 export default Search;

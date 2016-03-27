@@ -5,7 +5,7 @@ class App extends component{
     constructor(props){
         super(props);
         this.state = {
-            username: 'bradtraversy',
+            username: ' ',
 			userData: [],
 			userRepos: [],
 			perPage: 5
@@ -44,6 +44,13 @@ class App extends component{
     			}.bind(this)
     		});
     	}
+    	
+    	handleFormSubmit(username){
+	    	this.setState({username: username}, function(){
+			this.getUserData();
+			this.getUserRepos();
+		    });
+	    }
         
         componentDidMount(){
     		this.getUserData();
@@ -53,7 +60,8 @@ class App extends component{
         render(){
             return(
 			<div>
-				<Profile userData = {this.state.userData} />
+				<Search onFormSubmit = {this.handleFormSubmit.bind(this)} />
+				<Profile {...this.state} />
 			</div>
 		);
     }
